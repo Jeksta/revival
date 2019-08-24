@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 2019-08-xx
+## [0.1.0] - 2019-08-24
 ### Added
 - Node: Dissection Table
 - Node: Bee Hive

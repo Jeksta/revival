@@ -102,18 +102,10 @@ function revival.get_bee_hive_inactive_formspec()
 																																							"listring[context;dst7]" .. "listring[current_player;main]"
 end
 
---
--- Node callback functions that are the same for hive_state and inhive_state furnace
---
-
-local function add_mutation_to_drops(queen_stack, drone_stack)
-	local queen_species = bee.get_species_from_name(queen_stack:get_name())
-	local drone_species = bee.get_species_from_name(drone_stack:get_name())
-	local species_properties = bee.get_species_properties(queen_species)
-
+local function add_mutation_to_drops(drops, properties, drone_species)
 	-- get the possible mutation between queen and drone
 	local mutation, mut_chance
-	mutation, mut_chance = bee.get_mutation(species_properties.mutation, drone_species)
+	mutation, mut_chance = bee.get_mutation(properties.mutation, drone_species)
 
 	-- provided no mutation is possible, the drones species has a 50% chance
 	-- to recur
@@ -127,7 +119,6 @@ local function add_mutation_to_drops(queen_stack, drone_stack)
 		mutation = "revival:" .. mutation .. "_drone"
 	end
 
-	local drops = utils.shallow_copy(species_properties.drops)
 	drops[#drops + 1] = {item = mutation, chance = mut_chance, min_drop = 0, max_drop = 1}
 	return drops
 end
@@ -252,13 +243,18 @@ local function hive_node_timer(pos, elapsed)
 			local queen = inv:get_stack("queen", 1)
 			local drone = inv:get_stack("drone", 1)
 
+			local queen_species = bee.get_species_from_name(queen:get_name())
+			local drone_species = bee.get_species_from_name(drone:get_name())
+			local queen_properties = bee.get_species_properties(queen_species)
+
 			-- randomize the output
 			local output_dst = {"dst1", "dst2", "dst3", "dst4", "dst5", "dst6", "dst7"}
 			output_dst = utils.rand_permutation(output_dst)
 
 			-- guaranteed drops
 			local output = {ItemStack(queen:get_name()), ItemStack(drone:get_name())}
-			local drops = add_mutation_to_drops(queen, drone)
+			local drops = utils.shallow_copy(queen_properties.drops)
+			drops = add_mutation_to_drops(drops, queen_properties, drone_species)
 
 			for _, drop in ipairs(drops) do
 				local stack = ItemStack(drop.item)

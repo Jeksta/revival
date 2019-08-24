@@ -19,6 +19,39 @@ craft.register_craft(
     }
 )
 
+craft.register_craft(
+    {
+        type = "dissection",
+        shape = "shaped",
+        output = "revival:insect_parts 2",
+        recipe = {
+            {"butterflies:butterfly_red"}
+        }
+    }
+)
+
+craft.register_craft(
+    {
+        type = "dissection",
+        shape = "shaped",
+        output = "revival:insect_parts 2",
+        recipe = {
+            {"butterflies:butterfly_violet"}
+        }
+    }
+)
+
+craft.register_craft(
+    {
+        type = "dissection",
+        shape = "shaped",
+        output = "revival:insect_parts 2",
+        recipe = {
+            {"fireflies:firefly"}
+        }
+    }
+)
+
 minetest.register_craft(
     {
         type = "shaped",

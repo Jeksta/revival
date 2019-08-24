@@ -4,7 +4,7 @@ minetest.register_craft(
         type = "shaped",
         --temporary
         recipe = {
-            {"group:slab", "group:slab", "group:slab"},
+            {"group:tree", "group:tree", "group:tree"},
             {"group:wood", "", "group:wood"},
             {"group:wood", "group:wood", "group:wood"}
         }
@@ -17,7 +17,7 @@ minetest.register_craft(
         output = "revival:dissection_table",
         recipe = {
             {"group:tree", "group:tree", "group:tree"},
-            {"default:steel", "group:wood", "bucket:bucket_empty"},
+            {"default:steel_ingot", "group:wood", "bucket:bucket_empty"},
             {"group:tree", "group:wood", "group:tree"}
         }
     }

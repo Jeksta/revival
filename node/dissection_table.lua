@@ -81,7 +81,7 @@ minetest.register_node(
             "revival_dissection_table2_right.png",
             "revival_dissection_table3_left.png",
             "revival_dissection_table4_back.png",
-            "revival_dissection_table4_back.png"
+            "revival_dissection_table5_front.png"
         },
         paramtype2 = "facedir",
         drop = "revival:dissection_table",
@@ -96,7 +96,7 @@ minetest.register_node(
         on_construct = function(pos)
             local meta = minetest.get_meta(pos)
             meta:set_string("formspec", revival.get_dissection_table_formspec())
-            meta:set_string("infotext", "Nothing")
+            meta:set_string("infotext", "Dissection Table")
 
             local inv = meta:get_inventory()
             inv:set_size("require", 1)

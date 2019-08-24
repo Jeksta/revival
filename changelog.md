@@ -9,3 +9,10 @@ All notable changes to this project will be documented in this file.
 - Bee species: "Relic"
 - Bee species: "Glacial"
 - Bee species: "Primal"
+- Item: Amber
+- Item: Amber with Bee
+- Item: Insect Parts
+- Item: Empty Syringe
+- Item: Filled Syringe
+- Item: Crown
+- Ore: Amber Ore

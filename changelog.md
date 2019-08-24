@@ -14,5 +14,6 @@ All notable changes to this project will be documented in this file.
 - Item: Insect Parts
 - Item: Empty Syringe
 - Item: Filled Syringe
+- Item: Filled Honey Comb
 - Item: Crown
 - Ore: Amber Ore

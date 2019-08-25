@@ -2,7 +2,7 @@
 	- TODO
 	- change the flower structure to bee structure
 ]]
-flower.data = {
+extinct_flowers.data = {
 	{
 		"strange_rose",
 		"Strange Rose",
@@ -10,3 +10,7 @@ flower.data = {
 		{flammable = 1}
 	}
 }
+
+for _, item in pairs(extinct_flowers.data) do
+	extinct_flowers.register_flower(unpack(item))
+end

@@ -1,2 +1,0 @@
---TODO
--- minetest.register_node("plan_bee:honey_press", {})

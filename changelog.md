@@ -3,9 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.1] - 2019-08-25
 ### Changed
-- Mod is now a Modpack (not done)
+- Mod is now a Modpack
 - Bees are now rendered with overlays and layer colors to cut down on files
-- Transfered forum guide to wiki page (not done)
 
 ## [0.1.0] - 2019-08-24
 ### Added

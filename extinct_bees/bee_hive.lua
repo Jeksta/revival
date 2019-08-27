@@ -149,24 +149,21 @@ local function allow_metadata_inventory_put(pos, listname, index, stack, player)
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
 
-	-- only drones can be placed in the bottom list
 	if listname == "drone" then
-		-- only queens can be placed in the top list
 		if minetest.get_item_group(stack:get_name(), "drone") ~= 0 then
-			return stack:get_count()
-		else
-			return 0
+			if inv:is_empty("drone") then
+				return 1
+			end
 		end
 	elseif listname == "queen" then
-		-- nothing can be placed in the dst list
 		if minetest.get_item_group(stack:get_name(), "queen") ~= 0 then
-			return stack:get_count()
-		else
-			return 0
+			if inv:is_empty("queen") then
+				return 1
+			end
 		end
-	else
-		return 0
 	end
+
+	return 0
 end
 
 local function allow_metadata_inventory_move(pos, from_list, from_index, to_list, to_index, count, player)

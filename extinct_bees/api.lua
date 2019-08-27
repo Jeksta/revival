@@ -1,14 +1,26 @@
 function extinct_bees.add_species(species, color)
     local desc = utils.first_to_upper(species)
+
+    -- color = {stripes, body, wings}
+
+    -- body color
+    if not color[2] then
+        color[2] = "#000000c0"
+    end
+    -- wing color
+    if not color[3] then
+        color[3] = "#00000000"
+    end
+
     -- queen
     minetest.register_craftitem(
         "extinct_bees:" .. species .. "_queen",
         {
             description = desc .. " Queen",
-            inventory_image = "extinct_bees_bee_stripes.png",
-            inventory_overlay = "extinct_bees_bee_base.png^extinct_bees_bee_crown.png",
-            color = color,
-            stack_max = 1,
+            inventory_image = "extinct_bees_bee_body2.png^[colorize:" ..
+                color[2] ..
+                    ":alpha]^extinct_bees_bee_wings.png^[colorize:" .. color[3] .. ":alpha]^extinct_bees_bee_crown.png",
+            inventory_overlay = "extinct_bees_bee_stripes.png^[colorize:" .. color[1] .. ":alpha]",
             groups = {bee = 1, queen = 1}
         }
     )
@@ -17,10 +29,9 @@ function extinct_bees.add_species(species, color)
         "extinct_bees:" .. species .. "_drone",
         {
             description = desc .. " Drone",
-            inventory_image = "extinct_bees_bee_stripes.png",
-            inventory_overlay = "extinct_bees_bee_base.png",
-            color = color,
-            stack_max = 1,
+            inventory_image = "extinct_bees_bee_body2.png^[colorize:" ..
+                color[2] .. ":alpha]^extinct_bees_bee_wings.png^[colorize:" .. color[3] .. ":alpha]",
+            inventory_overlay = "extinct_bees_bee_stripes.png^[colorize:" .. color[1] .. ":alpha]",
             groups = {bee = 1, drone = 1}
         }
     )
@@ -61,4 +72,9 @@ function extinct_bees.get_mutation(mutation_table, drone_species)
             return content.mutation, content.chance
         end
     end
+end
+
+function extinct_bees.get_random_amount(chance, min, max)
+    --TODO
+    local c = 1 / chance
 end

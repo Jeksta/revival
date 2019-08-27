@@ -246,7 +246,7 @@ extinct_bees.data = {
         flower = FAR,
         drops = {
             {item = "extinct_bees:honey_comb_filled", chance = 4, min_drop = 1, max_drop = 3},
-            {item = "FARming:seed_wheat", chance = 4, min_drop = 0, max_drop = 3}
+            {item = "farming:seed_wheat", chance = 4, min_drop = 0, max_drop = 3}
         },
         mutation = {
             {drone = "ancient", mutation = "gentle", chance = 6.66},
@@ -262,7 +262,7 @@ extinct_bees.data = {
         flower = FAR,
         drops = {
             {item = "extinct_bees:honey_comb_filled", chance = 4, min_drop = 1, max_drop = 3},
-            {item = "FARming:wheat", chance = 1, min_drop = 0, max_drop = 3}
+            {item = "farming:wheat", chance = 1, min_drop = 0, max_drop = 3}
         },
         mutation = {
             {drone = "worker", mutation = "field", chance = 10}
@@ -274,7 +274,7 @@ extinct_bees.data = {
         flower = FAR,
         drops = {
             {item = "extinct_bees:honey_comb_filled", chance = 4, min_drop = 1, max_drop = 3},
-            {item = "FARming:seed_wheat", chance = 3, min_drop = 0, max_drop = 3}
+            {item = "farming:seed_wheat", chance = 3, min_drop = 0, max_drop = 3}
         },
         mutation = {
             {drone = "citric", mutation = "fruity", chance = 20}

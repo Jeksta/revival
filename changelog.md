@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [0.2.0] - 2019-08-27
 ### Added
 - Bees: 24 new species
-- Bees can crossbreed(mutate)
+- Bees can crossbreed
 
 ### Changed
 - Bees can be stacked

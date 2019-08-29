@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2019-08-29
+### Added
+- Crafting API(Dissection Table) now supports shapeless crafting and groups
+
+### Changed
+- Recipe for Bee DNA is now shapeless
+
 ## [0.2.0] - 2019-08-27
 ### Added
 - Bees: 24 new species

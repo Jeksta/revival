@@ -33,7 +33,7 @@ craft.register_craft(
         shape = "shaped",
         output = "extinct_bees:insect_parts 2",
         recipe = {
-            {"butterflies:butterfly_white"}
+            {"group:catchable"}
         }
     }
 )
@@ -41,44 +41,9 @@ craft.register_craft(
 craft.register_craft(
     {
         type = "dissection",
-        shape = "shaped",
-        output = "extinct_bees:insect_parts 2",
-        recipe = {
-            {"butterflies:butterfly_red"}
-        }
-    }
-)
-
-craft.register_craft(
-    {
-        type = "dissection",
-        shape = "shaped",
-        output = "extinct_bees:insect_parts 2",
-        recipe = {
-            {"butterflies:butterfly_violet"}
-        }
-    }
-)
-
-craft.register_craft(
-    {
-        type = "dissection",
-        shape = "shaped",
-        output = "extinct_bees:insect_parts 2",
-        recipe = {
-            {"fireflies:firefly"}
-        }
-    }
-)
-
-craft.register_craft(
-    {
-        type = "dissection",
-        shape = "shaped",
+        shape = "shapeless",
         output = "extinct_bees:bee_dna",
-        recipe = {
-            {"extinct_bees:amber_with_bee", "revival:empty_syringe"}
-        }
+        recipe = {"extinct_bees:amber_with_bee", "revival:empty_syringe"}
     }
 )
 

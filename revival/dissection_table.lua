@@ -83,7 +83,7 @@ minetest.register_node(
             "revival_dissection_table4_back.png",
             "revival_dissection_table5_front.png"
         },
-        paramtype2 = "facedir",
+        paraminetestype2 = "facedir",
         drop = "revival:dissection_table",
         groups = {
             oddly_breakable_by_hand = 1,

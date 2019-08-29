@@ -328,7 +328,7 @@ minetest.register_node(
 			"extinct_bees_bee_hive1_sides.png",
 			"extinct_bees_bee_hive2_front.png"
 		},
-		paramtype2 = "facedir",
+		paraminetestype2 = "facedir",
 		drop = "extinct_bees:bee_hive",
 		groups = {oddly_breakable_by_hand = 1, hive = 1},
 		legacy_facedir_simple = true,
@@ -388,7 +388,7 @@ minetest.register_node(
 			"extinct_bees_bee_hive1_sides.png",
 			"extinct_bees_bee_hive2_front.png"
 		},
-		paramtype2 = "facedir",
+		paraminetestype2 = "facedir",
 		light_source = 5,
 		drop = "extinct_bees:bee_hive",
 		groups = {oddly_breakable_by_hand = 1, not_in_creative_inventory = 1, hive = 1},

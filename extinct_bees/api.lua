@@ -42,7 +42,8 @@ function extinct_bees.register_bee_species(name, data)
         extinct_bees.data[name] = {}
     end
 
-    table.insert(extinct_bees.data[name], data)
+    extinct_bees.data[name] = data
+    --table.insert(extinct_bees.data[name], data)
     extinct_bees.add_species(name, data.color)
 end
 
@@ -67,9 +68,9 @@ end
 
 -- returns the possible mutation + chance
 function extinct_bees.get_mutation(mutation_table, drone_species)
-    for _, content in ipairs(mutation_table) do
-        if drone_species == content.drone then
-            return content.mutation, content.chance
+    for i = 1, #mutation_table, 1 do
+        if drone_species == mutation_table[i].drone then
+            return mutation_table[i].mutation, mutation_table[i].chance
         end
     end
 end

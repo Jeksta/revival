@@ -17,7 +17,7 @@ extinct_bees.data = {
         },
         mutation = {
             {drone = "test", mutation = "test", chance = 10},
-            {drone = "coral", mutation = "mummified", chance = 10}
+            {drone = "coral", mutation = "mummified", chance = 2}
         }
     },
     ancient = {
@@ -95,7 +95,7 @@ extinct_bees.data = {
         flower = NORMAL_CLOSE,
         drops = {
             {item = "extinct_bees:honey_comb_filled", chance = 4, min_drop = 1, max_drop = 3},
-            {item = "default:sandstonebrick", chance = 4, min_drop = 0, max_drop = 4}
+            {item = "default:sandstonextinct_beesrick", chance = 4, min_drop = 0, max_drop = 4}
         },
         mutation = {
             {drone = "tropical", mutation = "barb", chance = 8.33},
@@ -104,7 +104,7 @@ extinct_bees.data = {
             {drone = "barb", mutation = "shrub", chance = 10}
         }
     },
-    Barb = {
+    barb = {
         color = {"#66a366f0", "#313028ff"},
         lifespan = 325,
         flower = NORMAL_FAR,
@@ -116,13 +116,13 @@ extinct_bees.data = {
             {drone = "dry", mutation = "shrub", chance = 10}
         }
     },
-    Shrub = {
+    shrub = {
         color = {"#aabb77f0", "#313028ff"},
         lifespan = 325,
         flower = NORMAL_CLOSE,
         drops = {
             {item = "extinct_bees:honey_comb_filled", chance = 4, min_drop = 1, max_drop = 3},
-            {item = "default:sandstonebrick", chance = 3, min_drop = 0, max_drop = 5}
+            {item = "default:sandstonextinct_beesrick", chance = 3, min_drop = 0, max_drop = 5}
         },
         mutation = {
             {drone = "unknown", mutation = "mummified", chance = 20}

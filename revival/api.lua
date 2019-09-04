@@ -61,7 +61,7 @@ function utils.delete_rand_n_from_table(t, n)
       t[element] = nil
    end
 
-   return utils.compess_table(t)
+   return utils.compress_table(t)
 end
 
 -- fisher and yates shuffle
@@ -135,7 +135,7 @@ function craft.register_craft(def)
    end
 
    local typ = def.type
-   if not (typ and def.shape and def.output and def.recipe) then
+   if not (typ and (def.shape or def.required_turns) and def.output and def.recipe) then
       return
    end
 
@@ -143,25 +143,16 @@ function craft.register_craft(def)
       def.recipe = {def.recipe}
    end
 
-   local recipe = {}
-   for i = 1, #def.recipe, 1 do
-      local stack = ItemStack(def.recipe[i])
-      local name = stack:get_name()
-      local count = stack:get_count()
-
-      if not recipe[name] then
-         recipe[name] = count
-      else
-         recipe[name] = recipe[name] + count
-      end
-   end
-
    if not all_recipes[typ] then
       all_recipes[typ] = {}
    end
 
    local a_r = all_recipes[typ]
-   a_r[#a_r + 1] = {shape = def.shape, output = def.output, recipe = def.recipe}
+   if def.shape then
+      a_r[#a_r + 1] = {shape = def.shape, output = def.output, recipe = def.recipe}
+   elseif def.required_turns then
+      a_r[#a_r + 1] = {required_turns = def.required_turns, output = def.output, recipe = def.recipe}
+   end
 end
 
 function craft.get_craft_recipe(typ, item)
@@ -173,7 +164,7 @@ function craft.get_craft_recipe(typ, item)
    end
 end
 
-local function get_shaped_result(craft, crafting_grid, grid_width, grid_height)
+local function get_shaped_result(craft, crafting_grid, grid_size)
    local recipe = craft.recipe
 
    -- get the size of the recipe
@@ -192,15 +183,15 @@ local function get_shaped_result(craft, crafting_grid, grid_width, grid_height)
       output = "",
       area = {},
       index = 1,
-      max_x = math.ceil(grid_width / recipe_cols),
-      max_y = math.ceil(grid_height / recipe_rows)
+      max_x = math.ceil(grid_size.width / recipe_cols),
+      max_y = math.ceil(grid_size.height / recipe_rows)
    }
 
    -- start to iterate through crafting_grid
    for i, item in ipairs(crafting_grid) do
       -- calc x,y from 1-dim table
-      local x = (i - 1) % grid_width + 1
-      local y = math.ceil(i / grid_height)
+      local x = (i - 1) % grid_size.width + 1
+      local y = math.ceil(i / grid_size.height)
 
       local group = ""
       if conc_recipe[anchor.index] then
@@ -282,7 +273,8 @@ local function parse_recipe(data)
       if data[i] ~= "" then
          if string.find(data[i], "group:") then
             -- seperates group_name from count
-            group, count = parse_group(data[i])
+            group,
+               count = parse_group(data[i])
             groups[group] = count
          else
             --
@@ -332,7 +324,15 @@ local function get_shapeless_result(craft, crafting_grid)
    end
 end
 
-function craft.get_craft_result(typ, list)
+local function get_press_result(craft, crafting_grid, turns)
+   if crafting_grid[1] == craft.recipe[1] then
+      if craft.required_turns == turns then
+         return craft.output
+      end
+   end
+end
+
+function craft.get_craft_result(typ, list, param)
    -- if one of both inputs is empty
    if not (typ and list) then
       return
@@ -340,21 +340,24 @@ function craft.get_craft_result(typ, list)
 
    -- get the crafting grid from the list
    local conc_crafting_grid = {}
-   local grid_width = 3
-   local grid_height = 3
-
    for i = 1, #list, 1 do
       conc_crafting_grid[#conc_crafting_grid + 1] = list[i]:get_name()
    end
 
    local craft_type = all_recipes[typ]
    for i = 1, #craft_type, 1 do
-      local output
+      local output = nil
 
-      if craft_type[i].shape == "shaped" then
-         output = get_shaped_result(craft_type[i], conc_crafting_grid, grid_width, grid_height)
-      elseif craft_type[i].shape == "shapeless" then
-         output = get_shapeless_result(craft_type[i], conc_crafting_grid)
+      if craft_type[i].shape then
+         if craft_type[i].shape == "shaped" then
+            output = get_shaped_result(craft_type[i], conc_crafting_grid, param)
+         elseif craft_type[i].shape == "shapeless" then
+            output = get_shapeless_result(craft_type[i], conc_crafting_grid)
+         end
+      end
+
+      if craft_type[i].required_turns then
+         output = get_press_result(craft_type[i], conc_crafting_grid, param)
       end
 
       if output then

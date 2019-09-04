@@ -24,6 +24,17 @@ minetest.register_craft(
     }
 )
 
+minetest.register_craft(
+    {
+        type = "shaped",
+        output = "default:torch 8",
+        recipe = {
+            {"extinct_bees:wax"},
+            {"default:stick"}
+        }
+    }
+)
+
 --[[
     Dissection Table
 ]]
@@ -148,5 +159,16 @@ craft.register_craft(
             {"extinct_bees:insect_parts", "default:gravel", "extinct_bees:insect_parts"},
             {"extinct_bees:insect_parts", "extinct_bees:insect_parts", "extinct_bees:insect_parts"}
         }
+    }
+)
+--[[
+    Press
+]]
+craft.register_craft(
+    {
+        type = "press",
+        required_turns = 5,
+        output = {"extinct_bees:honey", "extinct_bees:wax"},
+        recipe = "extinct_bees:honey_comb_filled"
     }
 )

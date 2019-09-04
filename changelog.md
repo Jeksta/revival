@@ -1,6 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2019-09-04
+### Added 
+- Node: Manual Press
+- Items: (Apple Juice, Fruit Mush, Press Crank, Wax, Honey)
+- Crafting API now supports press
+- Added group pressable to default:apple
+
+### Changed
+- get_craft_result(typ, list, param) needs param
+    param for shaped = {width = list_width, height = list_height}
+    param for shapeless = shapeless does not need param
+    param for press = #turns
+(Note: Dissection Table should be replaced due to this change)
+- Honey Combs are not edible anymore
+
+### Fixed
+- Nodes did not rotate to the direction of the player
+
 ## [0.2.1] - 2019-08-29
 ### Added
 - Crafting API(Dissection Table) now supports shapeless crafting and groups

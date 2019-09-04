@@ -24,8 +24,28 @@ minetest.register_craftitem(
         description = "Honey Comb",
         inventory_image = "extinct_bees_honey_comb_filled.png",
         wield_image = "extinct_bees_honey_comb_filled.png",
-        groups = {comb = 1},
-        on_use = minetest.item_eat(4)
+        groups = {pressable = 1, comb = 1}
+    }
+)
+
+minetest.register_craftitem(
+    "extinct_bees:honey",
+    {
+        description = "Honey",
+        inventory_image = "extinct_bees_honey.png",
+        wield_image = "extinct_bees_honey.png",
+        groups = {honey = 1, liquid = 1},
+        on_use = minetest.item_eat(8)
+    }
+)
+
+minetest.register_craftitem(
+    "extinct_bees:wax",
+    {
+        description = "Wax",
+        inventory_image = "extinct_bees_wax.png",
+        wield_image = "extinct_bees_wax.png",
+        groups = {wax = 1, solid = 1}
     }
 )
 

@@ -19,14 +19,15 @@ local function update_output(pos)
     local inv = meta:get_inventory()
 
     -- search for new output
-    local result = craft.get_craft_result("dissection", inv:get_list("craft"))
+    local size = {width = 3, height = 3}
+    local result = craft.get_craft_result("dissection", inv:get_list("craft"), size)
     inv:set_list("output", {result})
 end
 
-local function decrement_list(inventory, listname)
-    for i, s in pairs(inventory:get_list(listname)) do
+local function decrement_list(inv, listname)
+    for i, s in pairs(inv:get_list(listname)) do
         s:take_item(1)
-        inventory:set_stack(listname, i, s)
+        inv:set_stack(listname, i, s)
     end
 end
 
@@ -83,7 +84,7 @@ minetest.register_node(
             "revival_dissection_table4_back.png",
             "revival_dissection_table5_front.png"
         },
-        paraminetestype2 = "facedir",
+        paramtype2 = "facedir",
         drop = "revival:dissection_table",
         groups = {
             oddly_breakable_by_hand = 1,
@@ -99,6 +100,7 @@ minetest.register_node(
             meta:set_string("infotext", "Dissection Table")
 
             local inv = meta:get_inventory()
+
             inv:set_size("require", 1)
             inv:set_size("tool", 1)
             inv:set_size("craft", 9)

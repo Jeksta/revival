@@ -13,6 +13,29 @@ minetest.register_craft(
 minetest.register_craft(
     {
         type = "shaped",
+        output = "revival:crank",
+        recipe = {
+            {"default:stick", "default:steel_ingot", "default:stick"},
+            {"", "default:stick", ""}
+        }
+    }
+)
+
+minetest.register_craft(
+    {
+        type = "shaped",
+        output = "revival:manual_press",
+        recipe = {
+            {"group:tree", "revival:crank", "group:tree"},
+            {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+            {"group:tree", "group:tree", "group:tree"}
+        }
+    }
+)
+
+minetest.register_craft(
+    {
+        type = "shaped",
         output = "revival:empty_syringe 2",
         recipe = {
             {"vessels:glass_bottle", ""},
@@ -51,5 +74,17 @@ minetest.register_craft(
             {"default:cobble"},
             {"default:stick"}
         }
+    }
+)
+
+--[[
+    Press
+]]
+craft.register_craft(
+    {
+        type = "press",
+        required_turns = 5,
+        output = {"revival:apple_juice", "revival:fruit_mush"},
+        recipe = "default:apple"
     }
 )
